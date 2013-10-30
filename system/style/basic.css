@@ -1,0 +1,95 @@
+body{
+	font-family: 'robotoregular', Arial, sans-serif;
+	!font-family: Calibri, Arial, sans-serif;
+	cursor:default;
+	font-size: 14px;
+	overflow: hidden;
+}
+.unselectable{
+	-webkit-user-select: none;
+	-moz-user-select: none;     
+	-ms-user-select: none;      
+	-o-user-select: none;
+	user-select: none; 
+}
+#kernel{
+	position: fixed;
+	top:0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-image: url("../../system/images/background.jpg");
+	background-size: cover;
+}
+#kernel:-webkit-full-screen	{ width: 100% }
+#kernel:-moz-full-screen	{ width: 100% }
+#kernel:-ms-full-screen		{ width: 100% }
+#kernel:-o-full-screen		{ width: 100% }
+#kernel:full-screen			{ width: 100% }
+#menu-bar{
+	position: fixed;
+	top:0px;
+	left:0px;
+}
+.menu-bar{
+	width: 100%;
+	height: 22px;
+	padding: 0px 5px;
+}
+.menu-bar-left{
+	position: absolute;
+	top:0px;
+	left:5px;
+	height: 22px;
+	line-height: 22px;
+}
+.menu-bar-center{
+	position: fixed;
+	width: 100%;
+	top:0px;
+	text-align: center;
+}
+.menu-bar-center span{
+	display: inline-block;
+	line-height: 22px;
+	height: 22px;
+	padding: 0px 5px;
+}
+.menu-bar-right{
+	position: absolute;
+	top:0px;
+	right:10px;
+}
+.menu-bar-right ul{
+	list-style: none;
+}
+.menu-bar-right ul li{
+	display: inline-block;
+	position:relative;
+	top:-14px;
+	height: 22px;
+	width: 22px;
+}
+.menu-bar-right ul li img{
+	position: relative;
+	width: 16px;
+	height: 16px;
+	top:3px;
+	left: 3px;
+}
+.mbr-notification{
+	position: fixed;
+	top:15px;
+	right: 5px;
+	width: 200px;
+	padding: 10px;
+	opacity: 0;
+	text-align: center;
+}
+#watermark{
+	color: #fff;
+	position: absolute;
+	right: 20px;
+	bottom: 0px;
+	opacity: 0.9;
+}

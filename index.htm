@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Cloud nOS</title>
+	<!--Favicon-->
+	<link rel="shortcut icon" href="system/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="system/images/favicon.ico" type="image/x-icon">
+	<!--CSS-->
+	<link rel="stylesheet" type="text/css" href="system/font/font.css">
+	<link rel="stylesheet" type="text/css" href="system/style/basic.css">
+	<link rel="stylesheet" type="text/css" href="system/style/nos-theme-basic.css">
+	<!--Javascript-->
+	<script type="text/javascript" src="system/scripts/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="system/scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="system/scripts/js-nos.js"></script>
+</head>
+<body oncontextmenu="return false;">
+	<!--Main-->
+	<div id="kernel" class="unselectable">
+		<!--Menu Bar-->
+		<div id="menu-bar" class="menu-bar">
+			<div class="menu-bar-left">
+				nOS
+			</div>
+			<div class="menu-bar-center unselectable">
+				<span id="datetime"></span>
+				<script type="text/javascript">getDateTime()</script>
+			</div>
+			<div class="menu-bar-right unselectable">
+				<ul>
+					<li id="wifibtn"><img src="system/images/toolbar/wifi.png"></li>
+					<li id="batterybtn"><img src="system/images/toolbar/battery.png"></li>
+					<li id="fullscreenbtn"><img src="system/images/toolbar/fullscreen.png"></li>
+				</ul>
+			</div>
+			<p id="fullscreen" class="mbr-notification unselectable"></p>
+			<p id="battery" class="mbr-notification unselectable"></p>
+			<p id="wifi" class="mbr-notification unselectable"></p>
+		</div>
+		<!---->
+		<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
+	</div>
+</body>
+</html>
