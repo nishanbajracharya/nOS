@@ -93,6 +93,7 @@ body{
 	right: 20px;
 	bottom: 0px;
 	opacity: 0.9;
+	text-shadow:0px 0px 5px rgba(0,0,0,0.9);
 }
 #sample{
 	position: absolute;
@@ -175,7 +176,7 @@ body{
 }
 .app-menu{
 	background: rgba(0,0,0,0.6);
-	z-index: 9999;
+	z-index: 998;
 }
 .app-menu input{
 	position: relative;
@@ -199,4 +200,17 @@ body{
 	color: #111;
 	box-shadow: inset 0px 0px 5px rgba(0,0,0,0.7),
 					  0px 0px 5px rgba(0,0,0,0.5);
+}
+.icon-draggable{
+	transition:.5s all;
+}
+.moveDownClass{
+	transition:.5s all;
+	position: relative;
+	top:50px;
+}
+.moveUpClass{
+	transition:.5s all;
+	position: relative;
+	top:0px;
 }
