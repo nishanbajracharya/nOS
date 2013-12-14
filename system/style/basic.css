@@ -208,7 +208,7 @@ body{
 .moveDownClass{
 	transition:.5s all;
 	position: relative;
-	top:45px;
+	top:70px;
 }
 .moveUpClass{
 	transition:.5s all;

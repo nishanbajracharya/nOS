@@ -1,0 +1,56 @@
+#calendar{
+	display: none;
+}
+.calendar-main {
+	width: 350px;
+	position: absolute;
+	top:20px;
+	left: 29.5%;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+.calendar-main table{
+	border: 1px solid rgba(0,0,0,0.6);
+}
+.month {
+	position: relative;
+	background: rgba(255,255,255,0.5);
+	font-weight: bold;
+	font-size: 20px;
+
+}
+.month-hei{
+	line-height: 50px;
+	height:50px;
+}
+.month-hei hr{
+	margin-top: 0px;
+}
+.daysofweek {
+	background: rgba(255,255,255,0.5);;
+}
+
+.days {
+	color:black;
+	background: rgba(255,255,255,0.5);;
+	padding: 4px;
+}
+
+.days #today{
+	font-weight: bold;
+	color: red;
+}
+
+.calendar-main hr.month-hr{
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+	background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+	background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+	background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+.calendar-main hr.day-hr{
+	border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}

@@ -7,6 +7,7 @@
 	<!--CSS-->
 	<link rel="stylesheet" type="text/css" href="system/font/font.css">
 	<link rel="stylesheet" type="text/css" href="system/style/basic.css">
+	<link rel="stylesheet" type="text/css" href="system/style/calendar.css">
 	<link rel="stylesheet" type="text/css" href="system/style/nos-theme-basic.css">
 	<!--Javascript-->
 	<script type="text/javascript" src="system/scripts/jquery-1.10.2.js"></script>
@@ -14,70 +15,83 @@
 	<script type="text/javascript" src="system/scripts/browser.js"></script>
 	<script type="text/javascript" src="system/scripts/notification-bar.js"></script>
 	<script type="text/javascript" src="system/scripts/desktop.js"></script>
+	<script type="text/javascript" src="system/scripts/sysinfo.js"></script>
+	<script type="text/javascript" src="system/scripts/calendar.js"></script>
 </head>
 <body oncontextmenu="return false;">
 	<!-- Test Dummy
 	<img src='http://i.stack.imgur.com/Hqyt0.png' style="display:none" id="connect"/>
-	-->
-	<!--Main-->
-	<div id="kernel" class="unselectable">
-		<!--Menu Bar-->
-		<div id="menu-bar" class="menu-bar">
-			<div class="menu-bar-left">
-				nOS
-			</div>
-			<div class="menu-bar-center unselectable">
-				<span id="datetime"></span>
-				<script type="text/javascript">getDateTime()</script>
-			</div>
-			<div class="menu-bar-right">
-				<ul>
-					<li id="wifibtn"><img src="system/images/toolbar/wifi.png"></li>
-					<li id="batterybtn"><img src="system/images/toolbar/battery.png"></li>
-					<li id="fullscreenbtn"><img src="system/images/toolbar/fullscreen.png"></li>
-				</ul>
-			</div>
-			<p id="fullscreen" class="mbr-notification unselectable"></p>
-			<p id="battery" class="mbr-notification unselectable"></p>
-			<p id="wifi" class="mbr-notification unselectable"></p>
+-->
+<!--Main-->
+<div id="kernel" class="unselectable">
+	<!--Menu Bar-->
+	<div id="menu-bar" class="menu-bar">
+		<div class="menu-bar-left">
+			nOS
 		</div>
-		<!--Window-->
-		<div class="window win-draggable" id="sample">
-			<div class="title">Sample
-				<div class="close-btn">x</div>
-			</div>
+		<div class="menu-bar-center unselectable">
+			<span id="datetime"></span>
+			<script type="text/javascript">getDateTime()</script>
 		</div>
-		<div id="desktop" class="desktop">
-			<ul class="icon-draggable">
-				<li id="pc">
-					<img src="system/images/desktop/pc.png">
-					<p>My PC</p>
-				</li>
-				<li id="documents">
-					<img src="system/images/desktop/documents.png">
-					<p>Documents</p>
-				</li>
-				<li id="settings">
-					<img src="system/images/desktop/settings.png">
-					<p>Settings</p>
-				</li>
-				<li id="browser">
-					<img src="system/images/desktop/browser.png">
-					<p>Browser</p>
-				</li>
-				<li id="apps">
-					<img src="system/images/desktop/apps.png">
-					<p>Apps</p>
-				</li>
+		<div class="menu-bar-right">
+			<ul>
+				<li id="wifibtn"><img src="system/images/toolbar/wifi.png"></li>
+				<li id="batterybtn"><img src="system/images/toolbar/battery.png"></li>
+				<li id="fullscreenbtn"><img src="system/images/toolbar/fullscreen.png"></li>
 			</ul>
 		</div>
-		<div id="app-menu" class="app-menu">
-			<center><input type="text" id="search-bar" placeholder="Search Apps">
-				<div id="app-menu-grid" class="app-menu-grid">App Board</div>
-			</center>
-			<div id="running-apps" class="running-apps">Running Applications</div>
+		<div id="calendar">
+			<script type="text/javascript">
+
+			var todaydate=new Date()
+			var curmonth=todaydate.getMonth()+1 
+			var curyear=todaydate.getFullYear() 
+
+			document.write(buildCal(curmonth ,curyear, "calendar-main", "month", "daysofweek", "days", 0));
+			</script>
 		</div>
-		<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
+		<p id="fullscreen" class="mbr-notification unselectable"></p>
+		<p id="battery" class="mbr-notification unselectable"></p>
+		<p id="wifi" class="mbr-notification unselectable"></p>
 	</div>
+	<!--Window-->
+	<div class="window win-draggable" id="sample">
+		<div class="title">Sample
+			<div class="close-btn">x</div>
+		</div>
+	</div>
+	<div id="desktop" class="desktop">
+		<ul class="icon-draggable">
+			<li id="pc">
+				<img src="system/images/desktop/pc.png">
+				<p>My PC</p>
+			</li>
+			<li id="documents">
+				<img src="system/images/desktop/documents.png">
+				<p>Documents</p>
+			</li>
+			<li id="settings">
+				<img src="system/images/desktop/settings.png">
+				<p>Settings</p>
+			</li>
+			<li id="browser">
+				<img src="system/images/desktop/browser.png">
+				<p>Browser</p>
+			</li>
+			<li id="apps">
+				<img src="system/images/desktop/apps.png">
+				<p>Apps</p>
+			</li>
+		</ul>
+	</div>
+	<!--App Board-->
+	<div id="app-menu" class="app-menu">
+		<center><input type="text" id="search-bar" placeholder="Search Apps">
+			<div id="app-menu-grid" class="app-menu-grid">App Board</div>
+		</center>
+		<div id="running-apps" class="running-apps">Running Applications</div>
+	</div>
+	<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
+</div>
 </body>
 </html>

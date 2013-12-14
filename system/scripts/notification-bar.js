@@ -184,4 +184,8 @@ $(document).ready(function(){
     },function(){
         $('#wifi').animate({"opacity": "0"}, "slow");
     });
+
+    $('#datetime').click(function(){
+        $("#calendar").fadeToggle();
+    });
 });

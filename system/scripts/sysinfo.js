@@ -1,0 +1,1 @@
+//Javascript Doesn't Have Access To Any Form Of System Information. Yet!

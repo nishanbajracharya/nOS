@@ -3,6 +3,7 @@ $(function() {
 		handle: '.title'
 	});
 	$(".icon-draggable li").draggable();
+	$(".draggable").draggable();
 	toggled = false;
 	$.fn.appbar = function () {
 		$("#app-menu").fadeToggle();
