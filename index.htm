@@ -11,9 +11,12 @@
 	<!--Javascript-->
 	<script type="text/javascript" src="system/scripts/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="system/scripts/jquery-ui.js"></script>
-	<script type="text/javascript" src="system/scripts/js-nos.js"></script>
+	<script type="text/javascript" src="system/scripts/browser.js"></script>
+	<script type="text/javascript" src="system/scripts/notification-bar.js"></script>
+	<script type="text/javascript" src="system/scripts/desktop.js"></script>
 </head>
 <body oncontextmenu="return false;">
+	<img src='http://i.stack.imgur.com/Hqyt0.png' style="display:none" id="connect"/>
 	<!--Main-->
 	<div id="kernel" class="unselectable">
 		<!--Menu Bar-->
@@ -25,7 +28,7 @@
 				<span id="datetime"></span>
 				<script type="text/javascript">getDateTime()</script>
 			</div>
-			<div class="menu-bar-right unselectable">
+			<div class="menu-bar-right">
 				<ul>
 					<li id="wifibtn"><img src="system/images/toolbar/wifi.png"></li>
 					<li id="batterybtn"><img src="system/images/toolbar/battery.png"></li>
@@ -36,7 +39,39 @@
 			<p id="battery" class="mbr-notification unselectable"></p>
 			<p id="wifi" class="mbr-notification unselectable"></p>
 		</div>
-		<!---->
+		<!--Window-->
+		<div class="window win-draggable" id="sample">
+			<div class="title">Sample
+				<div class="close-btn">x</div>
+			</div>
+		</div>
+		<div id="desktop" class="desktop">
+			<ul class="icon-draggable">
+				<li id="pc">
+					<img src="system/images/desktop/pc.png">
+					<p>My PC</p>
+				</li>
+				<li id="documents">
+					<img src="system/images/desktop/documents.png">
+					<p>Documents</p>
+				</li>
+				<li id="settings">
+					<img src="system/images/desktop/settings.png">
+					<p>Settings</p>
+				</li>
+				<li id="browser">
+					<img src="system/images/desktop/browser.png">
+					<p>Browser</p>
+				</li>
+				<li id="apps">
+					<img src="system/images/desktop/apps.png">
+					<p>Apps</p>
+				</li>
+			</ul>
+		</div>
+		<div id="app-menu" class="app-menu">
+			<center><input type="text" id="search-bar" placeholder="Search Apps"></center>
+		</div>
 		<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
 	</div>
 </body>
