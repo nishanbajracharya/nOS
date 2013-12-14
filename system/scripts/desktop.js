@@ -5,12 +5,15 @@ $(function() {
 	$(".icon-draggable li").draggable();
 	toggled = false;
 	$.fn.appbar = function () {
+		$("#app-menu").fadeToggle();
 		if(!toggled){
 				$(".icon-draggable").removeClass("moveUpClass")
 				$(".icon-draggable").addClass("moveDownClass",'fast')
 				$(".app-menu-grid").delay(500).fadeIn();
+				$(".running-apps").delay(800).fadeIn();
 				toggled=true;
 			}else{
+				$(".running-apps").fadeOut();
 				$(".app-menu-grid").fadeOut();
 				$(".icon-draggable").addClass("moveUpClass",'normal')
 				$(".icon-draggable").delay(500).removeClass("moveDownClass")
@@ -18,13 +21,11 @@ $(function() {
 			}
 	};
 	$("#apps").click(function(){
-		$("#app-menu").fadeToggle();
 		$(document).appbar();
 	})
 	$(document).keyup(function(e) {
 		if (e.keyCode == 18) {
 			e.preventDefault();
-			$("#app-menu").fadeToggle();
 			$(document).appbar();
 		}   
 	});
