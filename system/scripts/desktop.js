@@ -3,28 +3,29 @@ $(function() {
 		handle: '.title'
 	});
 	$(".icon-draggable li").draggable();
-	$("#apps").click(function(){
-		$("#app-menu").fadeIn();
-		$(".icon-draggable").addClass("moveDownClass",'normal')
-		toggled=true;
-	})
-	$("#documents").dblclick(function(){
-
-	})
 	toggled = false;
-	$(document).keyup(function(e) {
-		if (e.keyCode == 18) {
-			e.preventDefault();
-			$("#app-menu").fadeToggle();
-			if(!toggled){
+	$.fn.appbar = function () {
+		if(!toggled){
 				$(".icon-draggable").removeClass("moveUpClass")
 				$(".icon-draggable").addClass("moveDownClass",'fast')
+				$(".app-menu-grid").delay(500).fadeIn();
 				toggled=true;
 			}else{
+				$(".app-menu-grid").fadeOut();
 				$(".icon-draggable").addClass("moveUpClass",'normal')
 				$(".icon-draggable").delay(500).removeClass("moveDownClass")
 				toggled=false;
 			}
+	};
+	$("#apps").click(function(){
+		$("#app-menu").fadeToggle();
+		$(document).appbar();
+	})
+	$(document).keyup(function(e) {
+		if (e.keyCode == 18) {
+			e.preventDefault();
+			$("#app-menu").fadeToggle();
+			$(document).appbar();
 		}   
 	});
 });

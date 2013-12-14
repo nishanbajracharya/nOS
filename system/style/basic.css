@@ -181,7 +181,7 @@ body{
 .app-menu input{
 	position: relative;
 	top:10px;
-	width: 360px;
+	width: 135px;
 	border:none;
 	outline: none;
 	height: 40px;
@@ -196,6 +196,7 @@ body{
 	transition:.2s;
 }
 .app-menu input:focus{
+	width: 400px;
 	background: #eee;
 	color: #111;
 	box-shadow: inset 0px 0px 5px rgba(0,0,0,0.7),
@@ -207,10 +208,22 @@ body{
 .moveDownClass{
 	transition:.5s all;
 	position: relative;
-	top:50px;
+	top:45px;
 }
 .moveUpClass{
 	transition:.5s all;
 	position: relative;
 	top:0px;
+}
+#app-menu-grid{
+	position: relative;
+	top:25px;
+}
+.app-menu-grid{
+	display: none;
+	width: 80%;
+	height: 80%;
+	padding: 10px;
+	border-radius: 3px;
+	background: rgba(255,255,255,0.6);
 }
