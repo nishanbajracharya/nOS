@@ -1,5 +1,8 @@
 #calendar{
 	display: none;
+	position: relative;
+	top:-20px;
+	opacity:0;
 }
 .calendar-main {
 	width: 350px;
@@ -26,12 +29,13 @@
 	margin-top: 0px;
 }
 .daysofweek {
-	background: rgba(255,255,255,0.5);;
+	background: rgba(255,255,255,0.5);
+	font-weight: bold;
 }
 
 .days {
 	color:black;
-	background: rgba(255,255,255,0.5);;
+	background: rgba(255,255,255,0.5);
 	padding: 4px;
 }
 

@@ -90,8 +90,8 @@ function launchFullScreen() {
         element.requestFullScreen();
     } else if(element.mozRequestFullScreen) {
         element.mozRequestFullScreen();
-    } else if(element.webkitRequestFullScreen) {
-        element.webkitRequestFullScreen();
+    } else if(element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)) {
+        element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
     }
 }
 function cancelFullscreen() {
@@ -184,8 +184,22 @@ $(document).ready(function(){
     },function(){
         $('#wifi').animate({"opacity": "0"}, "slow");
     });
-
+    cal_tog=false;
     $('#datetime').click(function(){
-        $("#calendar").fadeToggle();
+        if(cal_tog){
+            $("#calendar").animate({
+                top:"-=20px",
+                opacity:"0"
+            },250);
+            $("#calendar").fadeOut();
+            cal_tog=false;
+        }else{
+            $("#calendar").css({"display":"block"});
+            $("#calendar").animate({
+                top:"+=20px",
+                opacity:"1"
+            },250);
+            cal_tog=true;
+        }
     });
 });

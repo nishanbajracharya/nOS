@@ -2,10 +2,18 @@ $(function() {
 	$(".win-draggable").draggable({
 		handle: '.title'
 	});
-	$(".icon-draggable li").draggable();
+	$(".icon-draggable ul").draggable();
 	$(".draggable").draggable();
 	toggled = false;
 	$.fn.appbar = function () {
+		if(cal_tog){
+            $("#calendar").animate({
+                top:"-=20px",
+                opacity:"0"
+            },250);
+            $("#calendar").fadeOut();
+            cal_tog=false;
+        }
 		$("#app-menu").fadeToggle();
 		if(!toggled){
 				$(".icon-draggable").removeClass("moveUpClass")
@@ -26,6 +34,7 @@ $(function() {
 	})
 	$(document).keyup(function(e) {
 		if (e.keyCode == 18) {
+            
 			e.preventDefault();
 			$(document).appbar();
 		}   
