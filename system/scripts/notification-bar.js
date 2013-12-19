@@ -111,7 +111,7 @@ function disableFunctionKeys(e) {
 };
 
 var isChrome = window.chrome;
-
+var themeFolder = 'basic';
 function checkBattery(){
     if(isChrome){
         $('#battery').text("Battery Status Not Available In Webkit-based Browser");
@@ -124,20 +124,39 @@ function checkBattery(){
             }else{
                 $('#battery').text("Charging "+battery_lvl+"%");
             }
-            $('#batterybtn img').attr("src","system/images/toolbar/battery.png");
+            $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery.png)",
+                "background-size":"20px",
+                "background-position": "2px",
+                "background-repeat":"no-repeat"});
         }else{
             if(battery_lvl<20){
-                $('#batterybtn img').attr("src","system/images/toolbar/battery-20.png");
+                $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery-20.png)",
+                    "background-size":"20px",
+                    "background-position": "2px",
+                    "background-repeat":"no-repeat"});
             }else if(battery_lvl<40){
-                $('#batterybtn img').attr("src","system/images/toolbar/battery-40.png");
+                $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery-40.png)",
+                    "background-size":"20px",
+                    "background-position": "2px",
+                    "background-repeat":"no-repeat"});
             }else if(battery_lvl<60){
-                $('#batterybtn img').attr("src","system/images/toolbar/battery-60.png");
+                $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery-60.png)",
+                    "background-size":"20px",
+                    "background-position": "2px",
+                    "background-repeat":"no-repeat"});
             }else if(battery_lvl<80){
-                $('#batterybtn img').attr("src","system/images/toolbar/battery-80.png");
+                $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery-80.png)",
+                    "background-size":"20px",
+                    "background-position": "2px",
+                    "background-repeat":"no-repeat"});
             }else{
-                $('#batterybtn img').attr("src","system/images/toolbar/battery-100.png");
+                $('#batterybtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/battery-100.png)",
+                    "background-size":"20px",
+                    "background-position": "2px",
+                    "background-repeat":"no-repeat"});
             }
             $('#battery').text("Battery Remaining "+Math.round(battery.level*100)+"%");
+            //alert("url(../../../system/images/toolbar/"+themeFolder+"/battery-100.png)")
         }
     }
 }
@@ -147,11 +166,18 @@ function checkConnection() {
     status=navigator.onLine
     if(status){
         $('#wifi').text("Connected");
-        $('#wifibtn img').attr("src","system/images/toolbar/wifi.png");
+        if(!isChrome){
+            $('#wifibtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/wifi.png)",
+                "background-size":"20px",
+                "background-position": "2px",
+                "background-repeat":"no-repeat"});
+        }
     }else{
         $('#wifi').text("Not Connected");
-        $('#wifibtn img').attr("src","system/images/toolbar/wifi-fail.png");
-
+        $('#wifibtn').css({"background":"url(system/images/toolbar/"+themeFolder+"/wifi-fail.png)",
+            "background-size":"20px",
+            "background-position": "2px",
+            "background-repeat":"no-repeat"});
     }
 }
 setInterval(checkConnection,1000);
