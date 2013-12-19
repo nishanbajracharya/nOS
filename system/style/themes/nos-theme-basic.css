@@ -1,0 +1,63 @@
+/*Notification-Bar*/
+.menu-bar{
+	background: rgba(0,0,0,1);
+	color: #fff;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+}
+.menu-bar-right ul li:hover{
+	background-color: #2478d8;
+}
+.mbr-notification{
+	background: rgba(0,0,0,0.95);
+	color: #fff;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+	border-radius: 4px;
+}
+/*Desktop*/
+.window{
+	background: #fff;
+	border: 3px solid rgb(0,0,0);
+}
+.window .title{
+	background: rgb(0,0,0);
+	color: #fff;
+}
+.window .title .close-btn{
+	background: #711;
+	color: rgba(255,255,255,0.8);
+}
+.window .title .close-btn:hover{
+	background: #a11;
+	color: rgba(255,255,255,0.9);
+}
+.app-menu{
+	background: rgba(0,0,0,0.6);
+}
+/*Apps*/
+.app-title{
+	background: #000;
+	color: #fff;
+}
+.app-title .close-btn{
+	background: #711;
+	color: rgba(255,255,255,0.8);
+}
+.app-title .close-btn:hover{
+	background: #a11;
+	color: rgba(255,255,255,0.9);
+}
+.browser-bar{
+	color: #fff;
+	background: #000;
+}
+.browser-bar input:focus{
+	box-shadow: inset 0px 0px 3px rgba(0,0,0,0.3),
+				inset 0px -1px 2px rgba(0,0,0,0.15),
+				inset 0px 2px 2px rgba(0,0,0,0.15),
+				0px 1px #01a2e8,0px -1px #01a2e8,
+				1px 0px #01a2e8,-1px 0px #01a2e8;
+}
+#loader-circle{
+	background: url(../../images/loader-circle.GIF);
+	background-size: 24px;
+}

@@ -13,8 +13,6 @@
 	left: 0px;
 	width: 5%;
 	height: 34px;
-	background: #000;
-	color: #fff;
 	line-height: 34px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
@@ -24,9 +22,7 @@
 	top:0px;
 	width: 38px;
 	height: 34px;
-	background: #711;
 	transition:.25s all;
-	color: rgba(255,255,255,0.8);
 	text-align: center;
 	line-height: 31px;
 }
@@ -36,17 +32,12 @@
 	left: 38px;
 	top:0px;
 }
-.app-title .close-btn:hover{
-	background: #a11;
-	color: rgba(255,255,255,0.9);
-}
 .app-body{
 	position: absolute;
 	top:0px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	!background: #000;
 	color: #fff;
 }
 /*App Specific*/
@@ -62,8 +53,6 @@
 .browser-bar{
 	width: 95%;
 	padding: 3px;
-	color: #fff;
-	background: #000;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
 .browser-bar input{
@@ -78,13 +67,6 @@
 	border-radius: 3px;
 	color: #000;
 	transition:.3s all;
-}
-.browser-bar input:focus{
-	box-shadow: inset 0px 0px 3px rgba(0,0,0,0.3),
-				inset 0px -1px 2px rgba(0,0,0,0.15),
-				inset 0px 2px 2px rgba(0,0,0,0.15),
-				0px 1px #01a2e8,0px -1px #01a2e8,
-				1px 0px #01a2e8,-1px 0px #01a2e8;
 }
 #browser-render{
 	position: absolute;
@@ -105,9 +87,7 @@
 	position: absolute;
 	float: right;
 	right: 10px;
-	top:2px;
-}
-#loader-circle img{
+	top:4px;
 	width: 24px;
 	height: 24px;
 }
