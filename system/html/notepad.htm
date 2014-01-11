@@ -1,0 +1,120 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../font/font.css">
+	<style>
+	.unselectable{
+		-webkit-user-select: none;
+		-moz-user-select: none;     
+		-ms-user-select: none;      
+		-o-user-select: none;
+		user-select: none; 
+	}
+	body{
+		font-family: 'robotoregular';
+		background: #eee;
+	}
+	textarea{
+		position: absolute;
+		bottom:11%;
+		left: 1%;
+		overflow:auto;
+		border:none;
+		width: 98%;
+		height: 82%;
+		border:none;
+		outline: none;
+		resize:none;
+		font-family: inherit;
+		font-size: 16px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 1px #999,
+		inset 0px 0px 1px #aaa;
+		padding: 10px;
+		font-family: inherit;
+	}
+	#toolbar{
+		position: absolute;
+		left: 1%;
+		top:1%;
+		width: 98%;
+		height: 5%;
+		line-height: 5%;
+		font-size: 16px;
+		cursor: default;
+	}
+	button{
+		display: inline-block;
+		border-radius: 4px;
+		box-shadow: 0px 0px 1px #999,
+		inset 0px 0px 1px #aaa;
+		height: 100%;
+		line-height: 100%;
+		width: 40px;
+		outline:none;
+		font-size: 16px;
+		border:0px solid #2478d8;
+		transition:.2s all;
+	}
+	button:hover{
+		border:1px solid #2478d8;
+	}
+	.button-selected,.nontoggle:active{
+		box-shadow: 0px 0px 1px #2478d8,
+		inset 0px 0px 5px #2478d8;
+		background: #fff;
+	}
+	.bold{
+		font-weight: bold;
+	}
+	.italics{
+		font-style: italic;
+	}
+	.underlined{
+		text-decoration: underline;
+	}
+	#separator{
+		display: inline-block;
+		width: 25px;
+	}
+	</style>
+	<script type="text/javascript" src="../scripts/jquery-1.10.2.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("#bold").click(function(){
+			$(this).toggleClass("button-selected");
+			$("#contents").toggleClass("bold");
+		})
+		$("#italics").click(function(){
+			$(this).toggleClass("button-selected");
+			$("#contents").toggleClass("italics");
+		})
+		$("#underlined").click(function(){
+			$(this).toggleClass("button-selected");
+			$("#contents").toggleClass("underlined");
+		})
+		$("#fontadd").click(function(){
+			font_ini = parseInt($("#contents").css('font-size').split('px')[0])+1;
+			font_size = font_ini + 1 + "px"
+			$("#contents").css({'font-size':font_size});
+		})
+		$("#fontsubtract").click(function(){
+			font_ini = parseInt($("#contents").css('font-size').split('px')[0])-1;
+			font_size = font_ini - 1 + "px"
+			$("#contents").css({'font-size':font_size});
+		})
+	})
+	</script>
+</head>
+<body oncontextmenu="return false;" class="unselectable">
+	<div id="toolbar">
+		<button id="bold"><strong>B</strong></button>
+		<button id="italics"><i>I</i></button>
+		<button id="underlined"><u>U</u></button>
+		<div id="separator"></div>
+		Font Size &nbsp;
+		<button id="fontadd" class="nontoggle">+</button>
+		<button id="fontsubtract" class="nontoggle">-</button>
+	</div>
+	<textarea autofocus id="contents"></textarea>
+</body>
+</html>

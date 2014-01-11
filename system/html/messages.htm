@@ -1,0 +1,298 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../font/font.css">
+	<style>
+	body{
+		font-family: 'robotoregular';
+		width: 100%;
+		overflow: hidden;
+		background: #eee;
+	}
+	.selected{
+		box-shadow: inset 5px 0px 10px rgba(0,0,0,0.3);
+		background-color: #2478d8;
+		color:#fff;
+	}
+	.unselectable{
+		-webkit-user-select: none;
+		-moz-user-select: none;     
+		-ms-user-select: none;      
+		-o-user-select: none;
+		user-select: none; 
+	}
+	#people{
+		position: absolute;
+		left:0px;
+		top:0px;
+		width: 40%;
+		height: 100%;
+		background: #eee;
+		border-right: 1px solid #ccc;
+		z-index: 999;
+	}
+	#messages{
+		position: absolute;
+		left:40%;
+		top:0px;
+		width: 60%;
+		height: 75%;
+		background: #fff;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	#messages-sender{
+		position: absolute;
+		left:40%;
+		top:75%;
+		width: 60%;
+		height: 15%;
+		background: #eee;
+		border-top: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		z-index: 999;
+	}
+	#messages-sender textarea{
+		position: absolute;
+		left: 1%;
+		top: 6%;
+		height: 88%;
+		width: 88%;
+		padding: 0.5% 0.5%;
+		resize:none;
+		font-family: inherit;
+		transition:.2s;
+		outline: none;
+		border: 1px solid #aaa;
+		border-radius: 3px;
+	}
+	#messages-sender textarea:hover{
+		box-shadow: 0px 0px 1px #2478d8;
+	}
+	#messages-sender textarea:focus{
+		box-shadow: 0px 0px 3px #2478d8, inset 0px 0px 3px #2478d8;
+	}
+	#submit{
+		position: absolute;
+		float: right;
+		right: 1%;
+		top: 5%;
+		font-family: inherit;
+		outline: none;
+		border: 1px solid #aaa;
+		width: 9%;
+		padding: 1%;
+		text-align: center;
+		border-radius: 3px;
+		transition:.2s;
+	}
+	#submit:hover{
+		box-shadow: 0px 0px 1px #2478d8;
+	}
+	#submit:active{
+		box-shadow: 0px 0px 1px #2478d8, inset 0px 0px 3px #2478d8;
+	}
+	#sidebar-trigger{
+		position: absolute;
+		float: right;
+		right:0px;
+		width: 10px;
+		height: 100%;
+		background: #eee;
+		border-left: 1px solid #ccc;
+		z-index: 9999999;
+		cursor: pointer;
+		transition:.2s;
+	}
+	#sidebar-trigger:hover{
+		background: #ddd;
+	}
+	#messages p.mine{
+		position: relative;
+		left: 30px;
+		top: 10px;
+		width: 35%;
+		margin: 10px;
+		margin-bottom: 30px;
+		padding: 5px 15px;
+		background: #2478d8;
+		border-radius:3px;
+		color: #fff;
+		box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+		cursor: default;
+	}
+	#messages p.mine:before{
+		content: '';
+		position: absolute;
+		top:10px;
+		left: -10px;
+		border-top: solid 5px transparent;
+		border-bottom: solid 5px transparent;
+		border-right: solid 10px #2478d8;
+	}
+	#messages p.yours{
+		position: relative;
+		left: 57%;
+		top: 10px;
+		width: 35%;
+		margin: 10px;
+		margin-bottom: 30px;
+		padding: 5px 15px;
+		background: #eee;
+		border-radius:3px;
+		box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+		cursor: default;
+	}
+	#messages p.yours:after{
+		content: '';
+		position: absolute;
+		top:10px;
+		right: -10px;
+		border-top: solid 5px transparent;
+		border-bottom: solid 5px transparent;
+		border-left: solid 10px #eee;
+	}
+	#fixed{
+		z-index: 999;
+		position: fixed;
+		width: inherit;
+		height: 20%;
+		left: inherit;
+		cursor: default;
+	}
+	#messArray{
+		z-index: 998;
+	}
+	#mes{
+		position: relative;
+		left: 2.5%;
+		width: 95%;
+	}
+	#mes .left{
+		float: left;
+	}
+	#mes .right{
+		float: right;
+	}
+	#mes span{
+		color: #777;
+	}
+	#mes span span{
+		color: #222;
+	}
+	ul#thepeople{
+		list-style: none;
+		margin-left: -40px;
+	}
+	#thepeople li{
+		width: inherit;
+		padding: 10px 20px;
+		transition:.2s;
+		cursor: pointer;
+	}
+	#thepeople li:hover{
+		background: #2478d8;
+		color: #fff;
+	}
+	#thepeople li span{
+		font-size: 15px;
+	}
+	</style>
+	<script type="text/javascript" src="../scripts/jquery-1.10.2.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('#thepeople li').click(function(){
+			$('#thepeople li').removeClass('selected')
+			$(this).addClass('selected')
+		})
+		on=true;
+		$("#sidebar-trigger").click(function(){
+			if(on){
+				on=false;
+				$("#people").animate({
+					'left':'-39.5%'
+				})
+				$("#messages").animate({
+					'left':'0.5%',
+					'width':'99.5%'
+				})
+				$("#messages-sender").animate({
+					'left':'0.5%',
+					'width':'99.5%'
+				})
+			}else{
+				on=true;
+				$("#people").animate({
+					'left':'0%'
+				})
+				$("#messages").animate({
+					'left':'40%',
+					'width':'60%'
+				})
+				$("#messages-sender").animate({
+					'left':'40%',
+					'width':'60%'
+				})
+			}
+		})
+		messArray=[]
+		messArrayRec=[]
+		$("#mess").keyup(function(e){
+			if(e.keyCode==13){
+				e.preventDefault();
+				messShow()
+				//scrollToBottom('messages')
+			}
+		})
+		$("#submit").click(function(){
+			messShow()
+			//scrollToBottom('messages')
+		})
+		function messShow(){
+			//$('#messArray').text("")
+			message=($("#mess").val());
+			messArrayRec.push("Hey, "+message);
+			if(message.length>1){
+				messArray.push(message)
+				$('#messArray').append("<p class='mine'>"+message+"</p>")
+			}
+			//for(i=0;i<messArray.length;i++){
+				
+				rn=Math.floor(Math.random()*5)
+				if(rn<3){
+					$('#messArray').append("<p class='yours'>Hey, "+message+"</p>")
+				}
+			//}
+			$("#mess").val("")
+			var myDiv = $("#messages");
+			myDiv.animate({ scrollTop: myDiv[0].scrollHeight}, 1000);
+
+		}
+	})
+</script>
+</head>
+<body class="unselectable" oncontextmenu="return false;">
+	<div id="people">
+		<div id="sidebar-trigger"></div>
+		<ul id="thepeople">
+			<li class="selected">John Doe<br><span id="messag">Message</span></li>
+			<li>Jane Doe<br><span id="messag">Message</span></li>
+			<li>John Doe<br><span id="messag">Message</span></li>
+		</ul>
+	</div>
+	<div id="messages">
+		<div id="fixed">
+			<div id="mes">
+				<span class="left">From : <span>You</span></span><span class="right">From : <span>John Doe</span></span>
+			</div>
+		</div>
+		<br>
+		<div id="messArray">
+		</div>
+	</div>
+	<div id="messages-sender">
+		<textarea id="mess"></textarea>
+		<button id="submit">Send</button>
+	</div>
+</body>
+</html>

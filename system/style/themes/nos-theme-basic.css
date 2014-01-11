@@ -14,6 +14,15 @@
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 	border-radius: 4px;
 }
+.highlighted {
+     background-color:yellow;
+}
+#reloadbtn{
+	background: url(../../../system/images/toolbar/basic/reload.png);
+	background-size:20px;
+	background-position: 2px;
+	background-repeat:no-repeat;
+}
 #wifibtn{
 	background: url(../../../system/images/toolbar/basic/wifi.png);
 	background-size:20px;
@@ -65,18 +74,40 @@
 	background: #a11;
 	color: rgba(255,255,255,0.9);
 }
-.browser-bar{
+.app-bar{
 	color: #fff;
 	background: #000;
 }
+.app-body{
+	background: #fff;
+}
 .browser-bar input:focus{
 	box-shadow: inset 0px 0px 3px rgba(0,0,0,0.3),
-				inset 0px -1px 2px rgba(0,0,0,0.15),
-				inset 0px 2px 2px rgba(0,0,0,0.15),
-				0px 1px #01a2e8,0px -1px #01a2e8,
-				1px 0px #01a2e8,-1px 0px #01a2e8;
+	inset 0px -1px 2px rgba(0,0,0,0.15),
+	inset 0px 2px 2px rgba(0,0,0,0.15),
+	0px 1px #01a2e8,0px -1px #01a2e8,
+	1px 0px #01a2e8,-1px 0px #01a2e8;
 }
 #loader-circle{
 	background: url(../../images/loader-circle.GIF);
 	background-size: 24px;
+}
+.document-main .sidebar,.settings-main .sidebar{
+	background: #eee;
+	border-right: 1px solid #ccc;
+}
+.sidebar ul li ul li{
+	transition:.2s;
+}
+.sidebar ul li ul li:hover{
+	background-color: #2478d8;
+}
+.music-player{
+	background: #eee;
+	border-top: 1px solid #ccc;
+}
+#music-player .media{
+	border:5px solid #2478d8;
+	background: transparent;
+	color: #2478d8;
 }

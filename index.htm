@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="system/style/apps.css">
 	<link rel="stylesheet" type="text/css" href="system/style/calendar.css">
 	<link rel="stylesheet" type="text/css" href="system/style/themes/nos-theme-basic.css">
+	<link rel="stylesheet" type="text/css" href="system/style/nanoscroller.css">
 	<!--Javascript-->
 	<script type="text/javascript" src="system/scripts/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="system/scripts/jquery-ui.js"></script>
@@ -19,6 +20,7 @@
 	<script type="text/javascript" src="system/scripts/sysinfo.js"></script>
 	<script type="text/javascript" src="system/scripts/calendar.js"></script>
 	<script type="text/javascript" src="system/scripts/apps.js"></script>
+	<script type="text/javascript" src="system/scripts/nanoscroller.js"></script>
 </head>
 <body oncontextmenu="return false;">
 	<!-- Test Dummy
@@ -37,6 +39,7 @@
 		</div>
 		<div class="menu-bar-right">
 			<ul>
+				<li id="reloadbtn"></li>
 				<li id="wifibtn"></li>
 				<li id="batterybtn"></li>
 				<li id="fullscreenbtn"></li>
@@ -55,11 +58,18 @@
 		<p id="fullscreen" class="mbr-notification unselectable"></p>
 		<p id="battery" class="mbr-notification unselectable"></p>
 		<p id="wifi" class="mbr-notification unselectable"></p>
+		<p id="reload" class="mbr-notification unselectable">Reload</p>
 	</div>
 	<!--Window-->
-	<div class="window win-draggable" id="sample">
-		<div class="title">Sample
-			<div class="close-btn">x</div>
+	<div class="window win-draggable pc-main" id="pc-main">
+		<div class="title">My PC
+			<!--<div class="close-btn">x</div>-->
+		</div>
+		<div class="win-side">
+			<center>
+				<img src="system/images/desktop/pc.png"><br>
+				My PC
+			</center>
 		</div>
 	</div>
 	<div id="desktop" class="desktop">
@@ -89,25 +99,165 @@
 	<!--App Board-->
 	<div id="app-menu" class="app-menu">
 		<center><input type="text" id="search-bar" placeholder="Search Apps">
-			<div id="app-menu-grid" class="app-menu-grid">App Board</div>
-		</center>
-		<div id="running-apps" class="running-apps">Running Applications</div>
-	</div>
-	<!--Apps-->
-	<div id="browser-main" class="app browser-main">
-		<div class="app-body">
-			<div id="browser-render" class="browser-render">
-				<iframe id="frame"></iframe>
+			<div id="app-menu-grid" class="app-menu-grid">App Board
+				<div id="apps-grid-icons">
+					<ul><li></li>
+					</ul>
+				</div>
+				<script type="text/javascript">
+				//for(i=0;i<5;i++){
+					bodies="<ul>";
+					appArray=[
+					"Camera",
+					"Gallery",
+					"Mail",
+					"Calculator",
+					"Maps",
+					"Messages",
+					"Music",
+					"News",
+					"Notepad",]
+					appURL=[
+					"system/html/camera.htm",
+					"system/html/gallery.htm",
+					"system/html/mail.htm",
+					"system/html/calculator.htm",
+					"system/html/map.htm",
+					"system/html/messages.htm",
+					"system/html/music.htm",
+					"system/html/news.htm",
+					"system/html/notepad.htm"]
+					for(j=1;j<=9;j++){
+						bodies+="<li><img src='system/images/apps/app ("+j+").png'><p>"+appArray[j-1]+"</p></li>"
+					}
+					$("#apps-grid-icons ul li").html(bodies+"</ul>")
+				//}
+				</script>
+				<div id="events-log" class="nano">
+					<center>Events Log</center><br>
+					<div align="left" id="console-log" class="content"> </div>
+					<script type="text/javascript">
+					if (typeof console  != "undefined") 
+						if (typeof console.log != 'undefined')
+							console.olog = console.log;
+						else
+							console.olog = function() {};
+
+						console.log = function(message) {
+							console.olog(message);
+							$('#console-log').prepend(log_time+" | "+message + '<br>');
+						};
+						console.error = console.debug = console.info =  console.log
+						</script>
+					</div>
+				</div>
+			</center>
+			<div id="running-apps" class="running-apps">Running Applications
+				<ul id="r-app-list"></ul>
 			</div>
 		</div>
-		<div id="app-title" class="app-title">
-			<div class="close-btn">x</div>
+		<!--Apps-->
+		<div id="app-general" class="app app-general">
+			<div class="app-body">
+				<iframe id="app-frame"></iframe>
+			</div>
+			<div id="app-title" class="app-title">
+				<div class="close-btn">x</div>
+			</div>
+			<div id="app-bar" class="app-bar">Documents
+			</div>
 		</div>
-		<div id="browser-bar" class="browser-bar">
-			<label for="browser-url">URL</label><input type="text" id="browser-url" spellcheck="false" placeholder="http://" value="http://www.duckduckgo.com"><div id="loader-circle"></div>
+		<div id="document-main" class="app document-main">
+			<div class="app-body">
+				<div id="sidebar" class="sidebar">
+					<ul>
+						<li>Pictures<hr>
+							<ul>
+								<li>Folder</li>
+								<li>Folder</li>
+								<li>Folder</li>
+							</ul>
+						</li><br>
+						<li>Videos<hr>
+							<ul>
+								<li>Folder</li>
+								<li>Folder</li>
+								<li>Folder</li>
+							</ul>
+						</li><br>
+						<li>Music<hr>
+							<ul>
+								<li>Folder</li>
+								<li>Folder</li>
+								<li>Folder</li>
+							</ul>
+						</li><br>
+					</ul>			
+				</div>
+				<div id="document-body" class="document-body">
+
+				</div>
+				<div id="music-player" class="music-player">
+					<center>
+						<button class="media previous"></button>
+						<button class="media play"></button>
+						<button class="media next"></button>
+					</center>
+				</div>
+			</div>
+			<div id="app-title" class="app-title">
+				<div class="close-btn">x</div>
+			</div>
+			<div id="app-bar" class="app-bar">Documents
+			</div>
 		</div>
+		<div id="settings-main" class="app settings-main">
+			<div class="app-body">
+				<div id="sidebar" class="sidebar">
+					<ul>
+						<li>Settings<hr>
+							<ul>
+								<li id="dis"><img src="system/images/settings-icon/display.png">Display</li>
+								<li id="dev"><img src="system/images/settings-icon/devices.png">Devices</li>
+								<li id="sys"><img src="system/images/settings-icon/system.png">System</li>
+								<li id="sec"><img src="system/images/settings-icon/security.png">Security</li>
+								<li id="net"><img src="system/images/settings-icon/networks.png">Networks</li>
+								<li id="usr"><img src="system/images/settings-icon/user-accounts.png">User Account</li>
+							</ul>
+						</li>
+					</ul>			
+				</div>
+				<div id="settings-body" class="settings-body">
+					<ul>
+						<li><img src="system/images/settings-icon/display.png"><br>Display</li>
+						<li><img src="system/images/settings-icon/devices.png"><br>Devices</li>
+						<li><img src="system/images/settings-icon/system.png"><br>System</li>
+						<li><img src="system/images/settings-icon/security.png"><br>Security</li>
+						<li><img src="system/images/settings-icon/networks.png"><br>Networks</li>
+						<li><img src="system/images/settings-icon/user-accounts.png"><br>User Account</li>
+					</ul>
+				</div>
+			</div>
+			<div id="app-title" class="app-title">
+				<div class="close-btn">x</div>
+			</div>
+			<div id="app-bar" class="app-bar">Settings
+			</div>
+		</div>
+		<div id="browser-main" class="app browser-main">
+			<div class="app-body">
+				<div id="browser-render" class="browser-render">
+					<iframe id="frame"></iframe>
+				</div>
+			</div>
+			<div id="app-title" class="app-title">
+				<div class="close-btn">x</div>
+			</div>
+			<div id="app-bar" class="app-bar browser-bar">
+				<label for="browser-url">URL</label><input type="text" id="browser-url" spellcheck="false" placeholder="http://" value="http://www.duckduckgo.com"><div id="loader-circle"></div>
+			</div>
+		</div>
+		<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
 	</div>
-	<p id="watermark">Cloud nOS "Euler" 2.71 Build 8281 </p>
-</div>
 </body>
 </html>

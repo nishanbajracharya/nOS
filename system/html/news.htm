@@ -1,0 +1,139 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../font/font.css">
+	<style>
+	body{
+		font-family: 'robotoregular';
+		background: #eee;
+	}
+	iframe{
+		position: absolute;
+		top:0px;
+		left: 0%;
+		overflow:auto;
+		border:none;
+		width: 99.5%;
+		height: 100%;
+		z-index: 99;
+	}
+	#sidebar{
+		position: absolute;
+		top:0px;
+		left: -19.5%;
+		border:none;
+		width: 20%;
+		height: 100%;
+		background: #eee;
+		box-shadow: 2px 0px 10px rgba(0,0,0,.3);
+		z-index: 999;
+	}
+	ul{
+		list-style: none;
+		z-index: 999999;
+	}
+	ul li{
+		padding-left:40px; 
+		margin-left: -40px;
+		line-height: 50px;
+		height: 50px;
+		font-size: 18px;
+		border-bottom: 1px solid #ddd;
+		cursor: pointer;
+		transition:.2s;
+	}
+	ul li:hover{
+		background-color: #2478d8;
+		color:#fff;
+	}
+	.selected{
+		box-shadow: inset 5px 0px 10px rgba(0,0,0,0.3);
+		background-color: #2478d8;
+		color:#fff;
+	}
+	.unselectable{
+		-webkit-user-select: none;
+		-moz-user-select: none;     
+		-ms-user-select: none;      
+		-o-user-select: none;
+		user-select: none; 
+	}
+	#sidebar-trigger{
+		position: absolute;
+		float: right;
+		right:0px;
+		width: 10px;
+		height: 100%;
+		background: #eee;
+		border-left: 1px solid #aaa;
+		z-index: 9999999;
+		cursor: pointer;
+		transition:.2s;
+	}
+	#sidebar-trigger:hover{
+		background: #ddd;
+	}
+	</style>
+</style>
+<script type="text/javascript" src="../scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#sidebar ul li").click(function(){
+		$("#sidebar ul li").removeClass('selected');
+		$(this).addClass('selected');
+		data_url=$(this).attr('href');
+		loadIframe("contents",data_url)
+	})
+	function loadIframe(iframeName, url) {
+		var $iframe = $('#' + iframeName);
+		if ( $iframe.length ) {
+			$iframe.attr('src',url);   
+			return false;
+		}
+		return true;
+	}
+	loadIframe("contents","http://www.bbc.co.uk")
+	on=false;
+	$("#sidebar-trigger").click(function(){
+		if(on){
+			on=false;
+			$("#sidebar").animate({
+				'left':'-19.5%'
+			})
+			$("iframe").animate({
+				'left':'0.5%',
+				'width':'99.5%'
+			})
+		}else{
+			on=true;
+			$("#sidebar").animate({
+				'left':'0%'
+			})
+			$("iframe").animate({
+				'left':'20%',
+				'width':'80%'
+			})
+		}
+
+	})
+})
+</script>
+</head>
+<body oncontextmenu="return false;" class="unselectable">
+	<div id="sidebar">
+		<div id="sidebar-trigger"></div>
+		<ul>
+			<li href="http://www.bbc.co.uk" class="selected">BBC</li>
+			<li href="http://www.cnn.com">CNN</li>
+			<li href="http://www.usatoday.com/">USA Today</li>
+			<li href="http://www.washingtonpost.com/">The Washington Post</li>
+			<li href="http://www.huffingtonpost.com/">Huffington Post</li>
+			<li href="http://www.foxnews.com/">Fox News</li>
+			<li href="http://www.theguardian.com/">The Guardian</li>
+			<li href="http://www.nbcnews.com/">NBC News</li>
+		</ul>
+		
+	</div>
+	
+	<iframe type="text/html" id="contents"></iframe>
+</body>
+</html>

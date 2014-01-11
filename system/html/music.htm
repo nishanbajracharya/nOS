@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../scripts/jquery-1.10.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="..//font/font.css">
+	<style type="text/css">
+	body{
+		background: #eee;
+		font-family: 'robotoregular';
+		overflow:hidden;
+	}
+	.unselectable{
+		-webkit-user-select: none;
+		-moz-user-select: none;     
+		-ms-user-select: none;      
+		-o-user-select: none;
+		user-select: none; 
+	}
+	#player-info{
+		position: absolute;
+		left: 30px;
+		top:10px;
+		width: 450px;
+		height: 300px;
+		cursor: default;
+	}
+	#player{
+		position: absolute;
+		left: 30px;
+		bottom:190px;
+		width: 450px;
+		height: 200px;
+		cursor: default;
+	}
+	.player-display{
+		padding: 10px;
+		padding-left: 50px;
+	}
+	#song-name{
+		font-size: 28px;
+		margin-top: 90px;
+		margin-bottom: 0px;
+	}
+	#artist{
+		font-size: 18px;
+		margin-top: 5px;
+	}
+	#seek-bar{
+		position: relative;
+		top:0px;
+		width: 75%;
+		height: 4px;
+		border-radius: 2px;
+		background: #111;
+		overflow: hidden;
+		transition:.2s;
+	}
+	#position{
+		height: inherit;
+		background: #2478d8;
+		width: 0%;
+	}
+	#seek-bar:hover{
+		height: 8px;
+		border-radius: 4px;
+	}
+	.buttons{
+		margin-left:-150px; 
+	}
+	.buttons ul{
+		list-style: none;
+	}
+	.buttons ul li{
+		position: relative;
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		border-radius: 30px;
+		margin: 17px;
+		border:3px solid #000;
+		transition:.2s;
+	}
+	.buttons ul li:hover{
+		box-shadow: 0px 0px 5px #2478d8,
+		inset 0px 0px 5px #2478d8;
+	}
+	.buttons ul li img{
+		position: absolute;
+		top:2px;
+		left: 4px;
+		width: 45px;
+	}
+	#rewind img{
+		left: 1px;
+	}
+	#play img{
+		left: 5px;
+	}
+	#stop img{
+		left: 2px;
+	}
+	</style>
+	<script type="text/javascript">
+	$(function(){
+		plays=2;
+		playing=false;
+		$("#play").click(function(){
+			if(playing){
+				$("#play img").attr('src','music/play.png')
+				$("#play img").css('left','5px')
+				playing=false;
+			}else{
+				$("#play img").attr('src','music/pause.png')
+				$("#play img").css('left','3px')
+				playing=true;
+			}
+		})
+		$("#stop").click(function(){
+			$("#play img").attr('src','music/play.png')
+			$("#play img").css('left','5px')
+			playing=false;
+		})
+	})
+	document.ready=function(){
+		function playing(){
+			//$("#position").css("width", "+=1%");	
+			if($("#position").width()>350){
+				$("#play img").attr('src','music/play.png')
+				$("#play img").css('left','5px')
+				playing=false;
+			}
+		}	
+	}
+	</script>
+</head>
+<body class="unselectable">
+	<div id="player-info" class="player-display">
+		<p id="song-name">Song Name</p>
+		<p id="artist">By <span id="artist-name">Artist Name</span></p>
+	</div>
+	<div id="player" class="player-display">
+		<p id="time">00:00 - 00:00</p>
+		<div id="seek-bar">
+			<div id="position"></div>
+		</div>
+		<div id="player-buttons" class="buttons">
+			<center>
+				<ul>
+					<li id="rewind"><img src="music/rewind.png"></li>
+					<li id="play"><img src="music/play.png"></li>
+					<li id="forward"><img src="music/forward.png"></li>
+					<li id="stop"><img src="music/stop.png"></li>
+				</ul>
+			</center>
+		</div>
+	</div>
+</body>
+</html>

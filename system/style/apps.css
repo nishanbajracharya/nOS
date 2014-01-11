@@ -6,6 +6,7 @@
 	width: 10%;
 	height: 10%;
 	z-index: 99999;
+	display: none;
 }
 .app-title{
 	position: absolute;
@@ -15,6 +16,7 @@
 	height: 34px;
 	line-height: 34px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+	z-index: 10;
 }
 .app-title .close-btn{
 	position: absolute;
@@ -38,22 +40,31 @@
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	color: #fff;
+}
+/*App General*/
+.app-body #app-frame{
+	position: absolute;
+	top:34px;
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 100%;
+	overflow: none;
 }
 /*App Specific*/
-#browser-main{
-	display: none;
-}
-#browser-bar{
+#app-bar{
 	position: absolute;
 	top:0px;
 	height: 28px;
 	left: 5%;
+	line-height: 28px;
+	text-align: left;
 }
-.browser-bar{
+.app-bar{
 	width: 95%;
 	padding: 3px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+	z-index: 10;
 }
 .browser-bar input{
 	margin-left: 10px;
@@ -90,4 +101,110 @@
 	top:4px;
 	width: 24px;
 	height: 24px;
+}
+#document-main #sidebar,#settings-main #sidebar{
+	position: absolute;
+	top:30px;
+	left: 0px;
+	width: 250px;
+	height: 100%;
+	z-index: 9;
+}
+#settings-body{
+	position: absolute;
+	top:30px;
+	left: 0px;
+	padding-left: 285px;
+	padding-top: 10px;
+	width: 100%;
+	height: 100%;
+	z-index: 8;
+}
+.settings-body ul{
+	list-style: none;
+}
+.settings-body ul li{
+	display: inline-block;
+	text-align: center;
+	width: 250px;
+	height: 150px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 20px;
+	margin-right: 100px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition:.2s;
+}
+.settings-body ul li:hover{
+	background-color: #2478d8;
+}
+.selected{
+		box-shadow: inset 5px 0px 10px rgba(0,0,0,0.3);
+		background-color: #2478d8;
+		color:#fff;
+	}
+#settings-main .sidebar ul li ul li{
+	position: relative;
+	font-weight: normal;
+	padding: 4px 45px;
+}
+#settings-main .sidebar ul li ul li img{
+	position: absolute;
+	float: right;
+	right: 20px;
+	top:4px;
+	width: 20px;
+}
+.sidebar ul{
+	list-style: none;
+	margin-left: -25px;
+}
+.sidebar ul li{
+	font-weight: bold;
+	color: #333;
+	text-shadow:0px 1px 2px rgba(0,0,0,0.1);
+	cursor: pointer;
+}
+.sidebar hr{
+	border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: -15px;
+    height: 0px;
+}
+.sidebar ul li ul{
+	margin-left:-65px;
+}
+.sidebar ul li ul li{
+	font-weight: normal;
+	padding: 2.5px 45px;
+}
+#document-body{
+	position: absolute;
+	top:30px;
+	left: 251px;
+	width: 100%;
+	height: 100%;
+}
+#music-player{
+	display: none;
+	position: absolute;
+	left: 0px;
+	bottom:0px;
+	width: 100%;
+	height: 105px;
+}
+#music-player .media{
+	outline: none;
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	line-height: 50px;
+	text-align: center;
+	font-weight: bold;
+	margin: 15px 10px;
 }
